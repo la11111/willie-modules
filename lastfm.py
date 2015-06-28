@@ -120,6 +120,7 @@ def nowplaying(bot, trigger):
         playcount = "unknown"
     loved = int(track_data['userloved'])
     track_name = last_track['name']
+    track_url = last_track['url']
     artist = last_track['artist']['#text']
     album = last_track['album']['#text'] or 'unknown album'
     try:
@@ -127,7 +128,7 @@ def nowplaying(bot, trigger):
             output += "{} is listening to: ".format(nick)
         if loved > 0:
             output += '\x035' + u'\u2665' +'\x03 ' # a little heart
-        output += '{} - {} - ({}) ({} plays)'.format(artist, track_name, album, playcount)     
+        output += '{} - {} - ({}) ({} plays) {}'.format(artist, track_name, album, playcount, track_url)     
         bot.say(output)
     except KeyError:
         bot.say("Couldn't find any recent tracks :(")
