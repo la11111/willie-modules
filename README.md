@@ -3,6 +3,7 @@ my modules for the Willie IRC Bot
 
 ## lastfm.py
 full-featured last.fm module for Willie IRC Bot
+Based loosely on last.fm by mulcare/meiccelli with a number of improvements.
 curently tested on: Willie v. 5.2.0
 
 This module requires an api key, which can be obtained from last.fm. 
