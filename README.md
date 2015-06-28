@@ -7,10 +7,10 @@ curently tested on: Willie v. 5.2.0
 
 This module requires an api key, which can be obtained from last.fm. 
 put it in your default.cfg like so:
-...
+```
 [lastfm]
 api_key = w4r8ijeoirjargkajgarbage
-...
+```
 
 commands:
 .fmset (lastfm_username) - set your last.fm username for your IRC nick
