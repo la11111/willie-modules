@@ -80,10 +80,11 @@ def nowplaying(bot, trigger):
         notme = True
     else:
         nick = trigger.nick
+    #check if nick is in room, if not, just use as lastfm username directly
     fmuser = bot.db.get_nick_value(nick, 'lastfm_user')
     if not fmuser:
-        bot.reply("Invalid username given or no username set. Use .fmset to set a username.")
-        return
+        bot.say("Use .fmset to associate a last.fm username with your IRC nick.")
+        fmuser = nick
     try:
         recent_tracks = query_lastfm(
             bot, 
@@ -125,7 +126,7 @@ def nowplaying(bot, trigger):
     album = last_track['album']['#text'] or 'unknown album'
     try:
         if notme:
-            output += "{} is listening to: ".format(nick)
+            output += "{}({}) is listening to: ".format(nick, fmuser)
         if loved > 0:
             output += '\x035' + u'\u2665' +'\x03 ' # a little heart
         output += '{} - {} - ({}) ({} plays) {}'.format(artist, track_name, album, playcount, track_url)     
@@ -153,11 +154,11 @@ def fmcmp(bot, trigger):
     fmuser1 = bot.db.get_nick_value(nick1, 'lastfm_user')
     fmuser2 = bot.db.get_nick_value(nick2, 'lastfm_user')
     if not fmuser1:
-        bot.reply('{} needs to run .fmset.'.format(nick1))
-        return
+        fmuser1 = nick1
+        bot.say("({}) Use .fmset to associate a last.fm username with your IRC nick.".format(nick1))
     if not fmuser2:
-        bot.reply('{} needs to run .fmset.'.format(nick2))
-        return
+        fmuser2 = nick2
+        bot.say("({}) Use .fmset to associate a last.fm username with your IRC nick.".format(nick2))
     result_json = query_lastfm(
         bot,
         method = 'tasteometer.compare',
@@ -177,9 +178,9 @@ def fmcmp(bot, trigger):
         return
     for a in result['comparison']['result']['artists']['artist']:
         artists.append(a['name'])
-    output = 'comparing {} and {} | score: {}% | top 10 artists: [{}]'.format(
-        nick1,
-        nick2,
+    output = 'comparing {} ({}) and {} ({}) | score: {}% | top 10 artists: [{}]'.format(
+        nick1, fmuser1,
+        nick2, fmuser2,
         score,
         ', '.join(artists)
     )
@@ -220,8 +221,8 @@ def fmtop(bot, trigger):
                 nick = m[1]
     fmuser = bot.db.get_nick_value(nick, 'lastfm_user')
     if not fmuser:
-        bot.reply('{} needs to run .fmset.'.format(nick))
-        return
+        fmuser = nick
+        bot.say("Use .fmset to associate a last.fm username with your IRC nick.")
     result_json = query_lastfm(
         bot,
         method = 'user.getTopArtists',
@@ -239,3 +240,4 @@ def fmtop(bot, trigger):
         ', '.join(artists)
     )
     bot.say(output)
+            
