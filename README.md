@@ -20,8 +20,8 @@ api_key = w4r8ijeoirjargkajgarbage
 
 **.fmwhois [IRCNick]** - get the last.fm username associated with a given nick
 
-**.np [IRCNick]** - get currently playing track for a given nick
+**.np [IRCNick|lastfm_username]** - get currently playing track for a given nick
 
-**.fmcompare (IRCNick) [IRCNick2]** - tasteometer comparison between two last.fm users
+**.fmcompare (IRCNick|lastfm_username) [IRCNick2|lastfm_username]** - tasteometer comparison between two last.fm users
 
-**.fmtop [overall|week|month|6month|year] [IRCNick]** - list top artists for a given time period
+**.fmtop [overall|week|month|6month|year] [IRCNick|lastfm_username]** - list top artists for a given time period
