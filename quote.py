@@ -1,5 +1,5 @@
 """
-quote.py - A simple quotes module for willie
+quote.py - A simple quotes module for sopel
 Copyright (C) 2014  Andy Chung - iamchung.com
 
 iamchung.com
@@ -20,13 +20,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
 from __future__ import unicode_literals
-from willie.module import rate
-import willie
+from sopel.module import rate
+import sopel
 import random
 import codecs # TODO in python3, codecs.open isn't needed since the default open does encoding.
 import sqlite3
 
-@willie.module.commands('quote')
+@sopel.module.commands('quote')
 @rate(5)
 def quote(bot, trigger):
 	options = QuoteModuleOptions()

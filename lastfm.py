@@ -1,12 +1,12 @@
 """
-lastfm.py - last.fm checker for willie bot
+lastfm.py - last.fm checker for sopel bot
 Written by Brenna Sage (unikitty11111@gmail.com)
 
-loosely based on: https://github.com/mulcare/willie-modules
+loosely based on: https://github.com/mulcare/sopel-modules
 license: GPL2
 
 To use this module, you'll need to get an api key from last.fm.
-place the key in your willie .cfg file like so:
+place the key in your sopel .cfg file like so:
 ...
 [lastfm]
 api_key = <your_api_key_lsdkjo4ij4>
@@ -14,8 +14,8 @@ api_key = <your_api_key_lsdkjo4ij4>
 """
 
 from __future__ import unicode_literals
-from willie import web
-from willie.module import commands, example
+from sopel import web
+from sopel.module import commands, example
 import json
 import sys
 import re

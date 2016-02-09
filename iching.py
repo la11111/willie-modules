@@ -5,12 +5,12 @@ Copyright 2008, Sean B. Palmer, inamidst.com
 Copyright © 2013, Elad Alfassa, <elad@fedoraproject.org>
 Licensed under the Eiffel Forum License 2.
 
-http://willie.dftba.net
+http://sopel.dftba.net
 """
 from __future__ import unicode_literals
 
-from willie.module import commands, rule, example, priority
-from willie.tools import iterkeys
+from sopel.module import commands, rule, example, priority
+from sopel.tools import iterkeys
 import json
 import random
 import string
@@ -20,7 +20,7 @@ import re
 class Iching(object):
     def __init__(self):
         self.text = json.loads(
-            open('/var/kitty/.willie/modules/texts_iching/iching2.json').read()
+            open('/var/kitty/.sopel/modules/texts_iching/iching2.json').read()
         )['hexagrams']
         self.hgtable =  {n['pattern']: int(n['hexnum']) for n in self.text}
 

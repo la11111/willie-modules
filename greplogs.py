@@ -5,22 +5,22 @@ Copyright 2008, Sean B. Palmer, inamidst.com
 Copyright © 2013, Elad Alfassa, <elad@fedoraproject.org>
 Licensed under the Eiffel Forum License 2.
 
-http://willie.dftba.net
+http://sopel.dftba.net
 """
 from __future__ import unicode_literals
-from willie.module import commands, rule, example, priority
-from willie.tools import iterkeys
+from sopel.module import commands, rule, example, priority
+from sopel.tools import iterkeys
 from subprocess import check_output
 import threading
-import willie.module
-import willie.tools
-from willie.config import ConfigurationError
+import sopel.module
+import sopel.tools
+from sopel.config import ConfigurationError
 import os
 
 def setup(bot):
    # locks for log files
     if not bot.memory.contains('greplog_locks'):
-        bot.memory['greplog_locks'] = willie.tools.WillieMemoryWithDefault(threading.Lock)
+        bot.memory['greplog_locks'] = sopel.tools.WillieMemoryWithDefault(threading.Lock)
 
 @commands('greplogs')
 @priority('low')
@@ -39,6 +39,6 @@ def greplogs(bot, trigger):
     with bot.memory['greplog_locks'][fpath]:
         with open(fpath, 'w') as f:
             f.write(result)
-    bot.reply("http://velvetandl.ace.gy/~willie_freenode/{}.txt".format(nick)) 
+    bot.reply("http://velvetandl.ace.gy/~sopel_freenode/{}.txt".format(nick)) 
     
 #    bot.say("channel: '{}'; query: '{}'".format(channel, query))

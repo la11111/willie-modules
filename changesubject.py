@@ -5,9 +5,9 @@ Copyright 2015 brenna kathryn sage CC
 Licensed under the gpl v2.
 """
 from __future__ import unicode_literals
-from willie import web
-from willie.module import NOLIMIT, commands, example
-from willie.formatting import bold
+from sopel import web
+from sopel.module import NOLIMIT, commands, example
+from sopel.formatting import bold
 import re
 from lxml import html
 import requests
